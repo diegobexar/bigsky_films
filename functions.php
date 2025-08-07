@@ -282,32 +282,40 @@ function big_sky_pictures_enqueue_fonts() {
     );
     
     $custom_css = "
-        :root {
-            --color-primary: #55A6D9;
-            --color-primary-light: #7EB6D9;
-            --color-accent: #F2A413;
-            --color-secondary: #F29441;
-            --color-deep: #BF5934;
-            --font-heading: 'Inter', sans-serif;
-            --font-body: 'Source Sans Pro', sans-serif;
-        }
+    :root {
+        /* Updated Color Palette */
+        --color-primary: #4F7302;      /* Deep Forest Green */
+        --color-primary-light: #83A603; /* Bright Green */
+        --color-accent: #D9CB04;        /* Bright Yellow */
+        --color-secondary: #D9A404;     /* Golden Yellow */
+        --color-deep: #BF6A1F;         /* Warm Orange */
         
-        body {
-            font-family: var(--font-body);
-        }
+        /* Additional variations */
+        --color-primary-dark: #3a5502;
+        --color-accent-light: #e6d635;
+        --color-secondary-light: #e6b535;
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-        }
-        
-        .site-title a {
-            color: var(--color-primary);
-        }
-        
-        .site-title a:hover {
-            color: var(--color-accent);
-        }
-    ";
+        /* Typography */
+        --font-heading: 'Inter', sans-serif;
+        --font-body: 'Source Sans Pro', sans-serif;
+    }
+    
+    body {
+        font-family: var(--font-body);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+    }
+    
+    .site-title a {
+        color: var(--color-primary);
+    }
+    
+    .site-title a:hover {
+        color: var(--color-accent);
+    }
+	";
     
     wp_add_inline_style( 'big-sky-pictures-style', $custom_css );
 }
