@@ -99,6 +99,7 @@ get_header();
 						$film_id = get_the_ID();
 						$duration = get_post_meta($film_id, 'duration', true);
 						$vimeo_id = get_post_meta($film_id, 'vimeo_video_id', true);
+						$youtube_id = get_post_meta($film_id, 'youtube_video_id', true);
 						$featured_image = get_the_post_thumbnail_url($film_id, 'large');
 						$fallback_image = get_post_meta($film_id, 'fallback_image', true);
 						
@@ -142,13 +143,20 @@ get_header();
 							
 							<!-- Overlay -->
 							<div class="portfolio-overlay">
-								<?php if ($vimeo_id) : ?>
+								<?php if (film_has_video($film_id)) : ?>
 									<div class="play-icon">
 										<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
 											<path d="M25 20L40 30L25 40V20Z" fill="var(--color-primary)"/>
 										</svg>
 									</div>
+									
+									<!-- Video Platform Badge -->
+									<?php if ($vimeo_id) : ?>
+										<span class="platform-badge vimeo-badge">Vimeo</span>
+									<?php elseif ($youtube_id) : ?>
+										<span class="platform-badge youtube-badge">YouTube</span>
+									<?php endif; ?>
 								<?php endif; ?>
 								
 								<?php if ($is_featured) : ?>

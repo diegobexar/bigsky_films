@@ -244,6 +244,89 @@ function register_film_status_taxonomy() {
 add_action( 'init', 'register_film_status_taxonomy', 0 );
 
 /**
+ * Get Film Video Embed Code
+ * Returns the embedded video player for either Vimeo or YouTube
+ */
+function get_film_video_embed($post_id, $width = 640, $height = 360) {
+    $vimeo_id = get_post_meta($post_id, 'vimeo_video_id', true);
+    $youtube_id = get_post_meta($post_id, 'youtube_video_id', true);
+    $fallback_image = get_post_meta($post_id, 'fallback_image', true);
+    
+    $video_html = '';
+    
+    // Prioritize Vimeo if both are provided
+    if (!empty($vimeo_id)) {
+        $video_html = '<div class="video-container vimeo-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">';
+        $video_html .= '<iframe src="https://player.vimeo.com/video/' . esc_attr($vimeo_id) . '?color=6B9B0F&title=0&byline=0&portrait=0" ';
+        $video_html .= 'width="' . $width . '" height="' . $height . '" ';
+        $video_html .= 'style="position:absolute;top:0;left:0;width:100%;height:100%;" ';
+        $video_html .= 'frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+        $video_html .= '</div>';
+    } elseif (!empty($youtube_id)) {
+        $video_html = '<div class="video-container youtube-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">';
+        $video_html .= '<iframe src="https://www.youtube.com/embed/' . esc_attr($youtube_id) . '?color=white&rel=0&showinfo=0" ';
+        $video_html .= 'width="' . $width . '" height="' . $height . '" ';
+        $video_html .= 'style="position:absolute;top:0;left:0;width:100%;height:100%;" ';
+        $video_html .= 'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        $video_html .= '</div>';
+    } elseif (!empty($fallback_image)) {
+        $video_html = '<div class="video-fallback" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">';
+        $video_html .= '<img src="' . esc_url($fallback_image) . '" alt="Film preview" ';
+        $video_html .= 'style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"/>';
+        $video_html .= '</div>';
+    }
+    
+    return $video_html;
+}
+
+/**
+ * Get Video Thumbnail URL
+ * Returns thumbnail URL for either platform
+ */
+function get_film_video_thumbnail($post_id) {
+    $vimeo_id = get_post_meta($post_id, 'vimeo_video_id', true);
+    $youtube_id = get_post_meta($post_id, 'youtube_video_id', true);
+    $fallback_image = get_post_meta($post_id, 'fallback_image', true);
+    
+    if (!empty($vimeo_id)) {
+        // Vimeo thumbnail requires API call, but we can use a basic endpoint
+        return "https://vumbnail.com/{$vimeo_id}.jpg";
+    } elseif (!empty($youtube_id)) {
+        return "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
+    } elseif (!empty($fallback_image)) {
+        return $fallback_image;
+    }
+    
+    return get_the_post_thumbnail_url($post_id, 'large');
+}
+
+/**
+ * Check if Film Has Video
+ */
+function film_has_video($post_id) {
+    $vimeo_id = get_post_meta($post_id, 'vimeo_video_id', true);
+    $youtube_id = get_post_meta($post_id, 'youtube_video_id', true);
+    
+    return !empty($vimeo_id) || !empty($youtube_id);
+}
+
+/**
+ * Extract Video ID from URL (utility function for admin)
+ */
+function extract_video_id($url, $platform) {
+    if ($platform === 'vimeo') {
+        // Extract Vimeo ID from various URL formats
+        preg_match('/vimeo\.com\/(?:.*\/)?([0-9]+)/', $url, $matches);
+        return isset($matches[1]) ? $matches[1] : '';
+    } elseif ($platform === 'youtube') {
+        // Extract YouTube ID from various URL formats
+        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url, $matches);
+        return isset($matches[1]) ? $matches[1] : '';
+    }
+    return '';
+}
+
+/**
  * Get Featured Film for Homepage
  */
 function get_featured_film() {
@@ -323,6 +406,101 @@ function big_sky_pictures_enqueue_fonts() {
     
     .site-title a:hover {
         color: var(--color-secondary);
+    }
+    
+    /* Video Platform Styling */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
+    
+    .film-video, .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .video-platform-indicator {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+    }
+    
+    .platform-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .vimeo-badge {
+        background-color: #1ab7ea;
+        color: white;
+    }
+    
+    .youtube-badge {
+        background-color: #ff0000;
+        color: white;
+    }
+    
+    /* Video fallback and overlay styling */
+    .video-fallback {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .play-button, .film-play-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    
+    .play-button:hover, .film-play-button:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Portfolio overlay platform badges */
+    .portfolio-overlay .platform-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 10px;
+        padding: 3px 6px;
+        border-radius: 8px;
+    }
+    
+    /* Featured badge styling */
+    .featured-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--color-accent);
+        color: var(--color-bg-primary);
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 ";
     
@@ -413,6 +591,7 @@ function big_sky_film_details_callback($post) {
     
     $duration = get_post_meta($post->ID, 'duration', true);
     $vimeo_id = get_post_meta($post->ID, 'vimeo_video_id', true);
+    $youtube_id = get_post_meta($post->ID, 'youtube_video_id', true);
     $fallback_image = get_post_meta($post->ID, 'fallback_image', true);
     $featured = get_post_meta($post->ID, 'featured_film', true);
     
@@ -427,6 +606,14 @@ function big_sky_film_details_callback($post) {
     echo '<td>';
     echo '<input type="text" id="vimeo_video_id" name="vimeo_video_id" value="' . esc_attr($vimeo_id) . '" placeholder="123456789" style="width:100%;"/>';
     echo '<p class="description">Enter only the Vimeo video ID (numbers only, not the full URL)</p>';
+    echo '</td>';
+    echo '</tr>';
+    
+    echo '<tr>';
+    echo '<th><label for="youtube_video_id">YouTube Video ID</label></th>';
+    echo '<td>';
+    echo '<input type="text" id="youtube_video_id" name="youtube_video_id" value="' . esc_attr($youtube_id) . '" placeholder="dQw4w9WgXcQ" style="width:100%;"/>';
+    echo '<p class="description">Enter only the YouTube video ID (from the URL after v= or youtu.be/)</p>';
     echo '</td>';
     echo '</tr>';
     
@@ -822,6 +1009,10 @@ function big_sky_save_film_meta($post_id) {
     
     if (isset($_POST['vimeo_video_id'])) {
         update_post_meta($post_id, 'vimeo_video_id', sanitize_text_field($_POST['vimeo_video_id']));
+    }
+    
+    if (isset($_POST['youtube_video_id'])) {
+        update_post_meta($post_id, 'youtube_video_id', sanitize_text_field($_POST['youtube_video_id']));
     }
     
     if (isset($_POST['fallback_image'])) {

@@ -28,6 +28,7 @@ get_header();
         $film_year = $film_year_terms && !is_wp_error($film_year_terms) ? $film_year_terms[0]->name : '';
         $duration = get_post_meta($film_id, 'duration', true);
         $vimeo_id = get_post_meta($film_id, 'vimeo_video_id', true);
+        $youtube_id = get_post_meta($film_id, 'youtube_video_id', true);
         $fallback_image = get_post_meta($film_id, 'fallback_image', true);
         $featured_image = get_the_post_thumbnail_url($film_id, 'full');
         
@@ -41,15 +42,25 @@ get_header();
             
             <!-- Video/Image Container -->
             <div class="hero-media">
-                <?php if ($vimeo_id) : ?>
+                <?php if (film_has_video($film_id)) : ?>
                     <div class="video-container" id="video-container">
-                        <iframe 
-                            src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?autoplay=1&muted=1&loop=1&background=1&controls=0" 
-                            frameborder="0" 
-                            allow="autoplay; fullscreen; picture-in-picture" 
-                            allowfullscreen
-                            class="hero-video">
-                        </iframe>
+                        <?php if ($vimeo_id) : ?>
+                            <iframe 
+                                src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?autoplay=1&muted=1&loop=1&background=1&controls=0&color=6B9B0F" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture" 
+                                allowfullscreen
+                                class="hero-video vimeo-video">
+                            </iframe>
+                        <?php elseif ($youtube_id) : ?>
+                            <iframe 
+                                src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>?autoplay=1&mute=1&loop=1&playlist=<?php echo esc_attr($youtube_id); ?>&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                class="hero-video youtube-video">
+                            </iframe>
+                        <?php endif; ?>
                         
                         <?php if ($hero_image) : ?>
                             <div class="video-fallback" id="video-fallback" style="background-image: url('<?php echo esc_url($hero_image); ?>');">
@@ -61,6 +72,15 @@ get_header();
                                 </button>
                             </div>
                         <?php endif; ?>
+                        
+                        <!-- Video Platform Indicator -->
+                        <div class="video-platform-indicator">
+                            <?php if ($vimeo_id) : ?>
+                                <span class="platform-badge vimeo-badge">Vimeo</span>
+                            <?php elseif ($youtube_id) : ?>
+                                <span class="platform-badge youtube-badge">YouTube</span>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php elseif ($hero_image) : ?>
                     <div class="hero-image" style="background-image: url('<?php echo esc_url($hero_image); ?>');"></div>

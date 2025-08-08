@@ -20,6 +20,7 @@ get_header();
 		$film_id = get_the_ID();
 		$duration = get_post_meta($film_id, 'duration', true);
 		$vimeo_id = get_post_meta($film_id, 'vimeo_video_id', true);
+		$youtube_id = get_post_meta($film_id, 'youtube_video_id', true);
 		$fallback_image = get_post_meta($film_id, 'fallback_image', true);
 		$featured_image = get_the_post_thumbnail_url($film_id, 'full');
 		
@@ -46,15 +47,25 @@ get_header();
 				
 				<!-- Video/Image Container -->
 				<div class="film-media">
-					<?php if ($vimeo_id) : ?>
+					<?php if (film_has_video($film_id)) : ?>
 						<div class="film-video-container">
-							<iframe 
-								src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?title=0&byline=0&portrait=0" 
-								frameborder="0" 
-								allow="autoplay; fullscreen; picture-in-picture" 
-								allowfullscreen
-								class="film-video">
-							</iframe>
+							<?php if ($vimeo_id) : ?>
+								<iframe 
+									src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?color=6B9B0F&title=0&byline=0&portrait=0" 
+									frameborder="0" 
+									allow="autoplay; fullscreen; picture-in-picture" 
+									allowfullscreen
+									class="film-video vimeo-video">
+								</iframe>
+							<?php elseif ($youtube_id) : ?>
+								<iframe 
+									src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>?color=white&rel=0&showinfo=0" 
+									frameborder="0" 
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+									allowfullscreen
+									class="film-video youtube-video">
+								</iframe>
+							<?php endif; ?>
 							
 							<?php if ($hero_image) : ?>
 								<div class="film-video-poster" style="background-image: url('<?php echo esc_url($hero_image); ?>');">
@@ -66,6 +77,15 @@ get_header();
 									</button>
 								</div>
 							<?php endif; ?>
+							
+							<!-- Video Platform Indicator -->
+							<div class="video-platform-indicator">
+								<?php if ($vimeo_id) : ?>
+									<span class="platform-badge vimeo-badge">Vimeo</span>
+								<?php elseif ($youtube_id) : ?>
+									<span class="platform-badge youtube-badge">YouTube</span>
+								<?php endif; ?>
+							</div>
 						</div>
 					<?php elseif ($hero_image) : ?>
 						<div class="film-image" style="background-image: url('<?php echo esc_url($hero_image); ?>');"></div>
