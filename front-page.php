@@ -138,9 +138,9 @@ get_header();
                     
                     <p>Founded with a passion for cinematic excellence, Big Sky Pictures brings together talented filmmakers, writers, and artists to create thought-provoking and entertaining films. From intimate character studies to epic narratives, we believe in the power of storytelling to connect, inspire, and transform.</p>
                     
-                    <div class="about-stats">
+                    <!--<div class="about-stats">
                         <div class="stat">
-                            <span class="stat-number"><?php echo wp_count_posts('film')->publish; ?></span>
+                            <span class="stat-number"><?php //echo wp_count_posts('film')->publish; ?></span>
                             <span class="stat-label">Films Produced</span>
                         </div>
                         <div class="stat">
@@ -151,7 +151,7 @@ get_header();
                             <span class="stat-number">25+</span>
                             <span class="stat-label">Awards Won</span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 
                 <div class="about-image">

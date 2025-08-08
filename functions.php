@@ -281,19 +281,25 @@ function big_sky_pictures_enqueue_fonts() {
         null
     );
     
-    $custom_css = "
+	$custom_css = "
     :root {
-        /* Updated Color Palette */
-        --color-primary: #4F7302;      /* Deep Forest Green */
-        --color-primary-light: #83A603; /* Bright Green */
-        --color-accent: #D9CB04;        /* Bright Yellow */
-        --color-secondary: #D9A404;     /* Golden Yellow */
-        --color-deep: #BF6A1F;         /* Warm Orange */
+        /* Brand Colors (Updated for dark mode) */
+        --color-primary: #6B9B0F;
+        --color-primary-light: #8DB022;
+        --color-primary-dark: #4F7302;
+        --color-accent: #F2D635;
+        --color-secondary: #E6B535;
+        --color-deep: #D97B3F;
         
-        /* Additional variations */
-        --color-primary-dark: #3a5502;
-        --color-accent-light: #e6d635;
-        --color-secondary-light: #e6b535;
+        /* Dark Mode Base Colors */
+        --color-bg-primary: #0D0F0A;
+        --color-bg-secondary: #151813;
+        --color-bg-elevated: #252821;
+        
+        /* Text Colors */
+        --color-text-primary: #F5F7F2;
+        --color-text-secondary: #D1D6CC;
+        --color-text-tertiary: #A8AFA1;
         
         /* Typography */
         --font-heading: 'Inter', sans-serif;
@@ -301,21 +307,24 @@ function big_sky_pictures_enqueue_fonts() {
     }
     
     body {
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
         font-family: var(--font-body);
     }
     
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-heading);
+        color: var(--color-text-primary);
     }
     
     .site-title a {
-        color: var(--color-primary);
+        color: var(--color-accent);
     }
     
     .site-title a:hover {
-        color: var(--color-accent);
+        color: var(--color-secondary);
     }
-	";
+";
     
     wp_add_inline_style( 'big-sky-pictures-style', $custom_css );
 }
