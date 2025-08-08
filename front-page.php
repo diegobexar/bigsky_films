@@ -259,21 +259,21 @@ get_header();
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h2>Let's Create Something Amazing</h2>
-                    <p class="lead">Ready to bring your story to life? Get in touch with our team to discuss your next film project.</p>
+                    <h2>Contact Big Sky Pictures</h2>
+                    <p class="lead">Contanct as about collaborating on your next film project.</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
                             <strong>Email</strong>
-                            <span>info@bigskypictures.com</span>
+                            <span>yak@highplainsfilms.org</span>
                         </div>
-                        <div class="contact-method">
+                        <!--<div class="contact-method">
                             <strong>Phone</strong>
                             <span>(555) 123-4567</span>
-                        </div>
+                        </div>-->
                         <div class="contact-method">
                             <strong>Location</strong>
-                            <span>Los Angeles, CA</span>
+                            <span>Missoula, MT</span>
                         </div>
                     </div>
                 </div>

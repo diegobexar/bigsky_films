@@ -590,7 +590,6 @@ li {
 	padding: 2rem 0;
 	margin-top: auto;
 	border-top: 1px solid var(--color-border-primary);
-	text-align: center;
 	color: var(--color-text-secondary);
 }
 
@@ -1162,7 +1161,7 @@ label {
 /* Contact Section */
 .contact-section {
 	padding: 6rem 0;
-	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-deep) 100%);
+	background: var(--color-primary-dark);
 	color: white;
 }
 

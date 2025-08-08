@@ -502,6 +502,181 @@ function big_sky_pictures_enqueue_fonts() {
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
+    
+    /* Footer Styling */
+    .site-footer {
+        background-color: var(--color-bg-secondary);
+        border-top: 1px solid var(--color-bg-elevated);
+        margin-top: 60px;
+    }
+    
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+        padding: 60px 0 40px 0;
+        border-bottom: 1px solid var(--color-bg-elevated);
+    }
+    
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding: 40px 0 30px 0;
+        }
+    }
+    
+    /* Footer Brand */
+    .footer-brand {
+        padding-right: 20px;
+    }
+    
+    .footer-logo {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        margin: 0 0 8px 0;
+    }
+    
+    .footer-tagline {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        margin: 0;
+        font-weight: 300;
+    }
+    
+    /* Footer Links */
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-links {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .footer-links {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+    
+    .footer-column h4 {
+        font-family: var(--font-heading);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        margin: 0 0 16px 0;
+    }
+    
+    .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-column li {
+        margin-bottom: 8px;
+    }
+    
+    .footer-column a {
+        color: var(--color-text-tertiary);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s ease;
+    }
+    
+    .footer-column a:hover {
+        color: var(--color-primary);
+    }
+    
+    /* Social Links */
+    .social-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+    }
+    
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background-color: var(--color-bg-elevated);
+        border-radius: 50%;
+        color: var(--color-text-secondary);
+        transition: all 0.2s ease;
+    }
+    
+    .social-links a:hover {
+        background-color: var(--color-primary);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .social-links svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Footer Bottom */
+    .footer-bottom {
+        padding: 20px 0;
+    }
+    
+    .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 12px;
+        }
+    }
+    
+    .copyright p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+    }
+    
+    .footer-credits {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+    }
+    
+    .footer-credits svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Custom Logo in Footer */
+    .footer-logo .custom-logo {
+        max-height: 40px;
+        width: auto;
+    }
 ";
     
     wp_add_inline_style( 'big-sky-pictures-style', $custom_css );
@@ -527,6 +702,7 @@ function big_sky_pictures_add_default_film_status() {
     }
 }
 add_action( 'after_switch_theme', 'big_sky_pictures_add_default_film_status' );
+
 
 // =============================================================================
 // NATIVE WORDPRESS META BOXES FOR FILMS

@@ -31,6 +31,36 @@ function big_sky_pictures_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	// Add Social Media Section
+	$wp_customize->add_section( 'big_sky_social_media', array(
+		'title'    => __( 'Social Media', 'big-sky-pictures' ),
+		'priority' => 120,
+	) );
+
+	// Facebook URL
+	$wp_customize->add_setting( 'facebook_url', array(
+		'default'           => 'https://facebook.com/bigskypictures',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'facebook_url', array(
+		'label'   => __( 'Facebook URL', 'big-sky-pictures' ),
+		'section' => 'big_sky_social_media',
+		'type'    => 'url',
+	) );
+
+	// Instagram URL
+	$wp_customize->add_setting( 'instagram_url', array(
+		'default'           => 'https://instagram.com/bigskypictures',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'instagram_url', array(
+		'label'   => __( 'Instagram URL', 'big-sky-pictures' ),
+		'section' => 'big_sky_social_media',
+		'type'    => 'url',
+	) );
 }
 add_action( 'customize_register', 'big_sky_pictures_customize_register' );
 
