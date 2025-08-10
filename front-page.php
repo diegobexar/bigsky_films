@@ -154,10 +154,18 @@ get_header();
             <div class="about-content">
                 <div class="about-text">
                     <h2>About Big Sky Pictures</h2>
-                    <p class="lead">We are an independent film production company dedicated to telling compelling stories that resonate with audiences worldwide.</p>
                     
-                    <p>Founded with a passion for cinematic excellence, Big Sky Pictures brings together talented filmmakers, writers, and artists to create thought-provoking and entertaining films. From intimate character studies to epic narratives, we believe in the power of storytelling to connect, inspire, and transform.</p>
-                    
+                    <p class="lead">Doug Hawes-Davis and Dru Carr co-founded High Plains Films in 1992 and have collaborated on dozens of independent documentaries, branded content, PSA's, and other media for more than three decades.  Their most recent feature film, ALL THE LABOR premiered at the SXSW Film Festival in 2013.  In 2012, their feature documentary FACING THE STORM: STORY OF THE AMERICAN BISON, a co-production of ITVS and Montana Public Television, was broadcast on the national PBS series, Independent Lens. In 2007, their film, LIBBY, MONTANA was broadcast nationally on the acclaimed PBS Series, POV: The American Documentary, and was nominated for a National Emmy Award the following year. </p>
+
+                    <p>Challenging in form and content, much of their work is intended to provide insight into the relationship between human society and the natural world.</p>
+
+<p>Carr and Hawes-Davis have also worked extensively as free-lance camera operators, producers, directors, and editors, assisting with documentaries, television, web video, and non-profit/corporate video production.</p>
+
+<p>Hawes-Davis is the founder of the annual Big Sky Documentary Film Festival, an Academy-qualifying event for short-form documentary.  The festival is consistently recognized as one of the world's finest documentary cinema events.</p>
+
+<p>Additionally, Hawes-Davis has taught filmmaking at the University of Montana and in the Colorado College Film & Media Studies Program.  Dru Carr has taught media production at the MAPS Media Institute in the Hamilton, Montana public school system as well as for Missoula Community Access Television (MCAT). </p>
+
+<p>High Plains Films also produces THE MONTANA EXPERIENCE: STORIES FROM BIG SKY COUNTRY, a youtube channel dedicated to all things concerning the great State of Montana.</p>
                     <!--<div class="about-stats">
                         <div class="stat">
                             <span class="stat-number"><?php //echo wp_count_posts('film')->publish; ?></span>
@@ -196,8 +204,8 @@ get_header();
                 <p>Explore our recent film productions</p>
             </div>
             
-            <div class="films-grid">
-                <?php
+            <div class="films-grid" style="display: none;">
+                <?php 
                 $recent_films = get_posts(array(
                     'post_type' => 'film',
                     'posts_per_page' => 6,
@@ -260,7 +268,7 @@ get_header();
             <div class="contact-content">
                 <div class="contact-info">
                     <h2>Contact Big Sky Pictures</h2>
-                    <p class="lead">Contanct as about collaborating on your next film project.</p>
+                    <p class="lead">Contact us about collaborating on your next film project.</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">

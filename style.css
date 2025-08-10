@@ -1796,7 +1796,7 @@ label {
 
 /* Portfolio Header */
 .portfolio-header {
-	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+	background: var(--color-primary-dark);
 	color: white;
 	padding: 4rem 0 3rem;
 	text-align: center;
@@ -1811,7 +1811,7 @@ label {
 	font-size: clamp(2.5rem, 5vw, 4rem);
 	font-weight: 700;
 	margin-bottom: 1rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	/*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);*/
 }
 
 .portfolio-description {

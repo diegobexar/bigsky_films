@@ -12,7 +12,8 @@
 		return;
 	}
 
-	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+	// Look for the menu toggle button in the site branding area
+	const button = document.querySelector( '.menu-toggle' ) || siteNavigation.getElementsByTagName( 'button' )[ 0 ];
 
 	// Return early if the button doesn't exist.
 	if ( 'undefined' === typeof button ) {
