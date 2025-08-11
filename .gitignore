@@ -5,3 +5,10 @@ Thumbs.db
 .vscode/
 vendor/
 composer.lock
+# Production deployment
+deploy-staging.sh
+wp-config.php
+.htaccess
+uploads/
+*.log
+.DS_Store
