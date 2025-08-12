@@ -284,8 +284,7 @@ get_header();
                 
                 <div class="contact-form">
                     <!-- Contact Form 7 shortcode will go here -->
-                    [contact-form-7 id="ae6a4f8" title="Contact Big Sky Pictures"]
-                    
+                   <p>[contact-form-7 id="ae6a4f8" title="Contact Big Sky Pictures"]</p>
                 </div>
             </div>
         </div>
