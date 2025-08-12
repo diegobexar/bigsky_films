@@ -201,7 +201,6 @@ get_header();
         <div class="container">
             <div class="section-header">
                 <h2>Our Latest Work</h2>
-                <p>Explore our recent film productions</p>
             </div>
             
             <div class="films-grid" style="display: none;">
