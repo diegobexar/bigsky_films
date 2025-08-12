@@ -200,7 +200,7 @@ get_header();
     <section class="portfolio-preview-section">
         <div class="container">
             <div class="section-header">
-                <h2>Our Latest Work</h2>
+                <h2>Our Latest Films</h2>
             </div>
             
             <div class="films-grid" style="display: none;">
