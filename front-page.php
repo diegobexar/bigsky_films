@@ -107,11 +107,8 @@ get_header();
                         
                         <div class="hero-actions">
                             <a href="<?php echo get_permalink($film_id); ?>" class="btn btn-primary">
-                                Watch Now
-                            </a>
-                            <a href="#about" class="btn btn-secondary">
                                 Learn More
-                            </a>
+                            </a>                         
                         </div>
                     </div>
                 </div>
@@ -287,7 +284,8 @@ get_header();
                 
                 <div class="contact-form">
                     <!-- Contact Form 7 shortcode will go here -->
-                    <p><em>Contact form integration coming in next phase...</em></p>
+                    [contact-form-7 id="ae6a4f8" title="Contact Big Sky Pictures"]
+                    
                 </div>
             </div>
         </div>
