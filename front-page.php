@@ -144,55 +144,7 @@ get_header();
     </section>
     
     <?php endif; ?>
-    
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Big Sky Pictures</h2>
-                    
-                    <p class="lead">Doug Hawes-Davis and Dru Carr co-founded High Plains Films in 1992 and have collaborated on dozens of independent documentaries, branded content, PSA's, and other media for more than three decades.  Their most recent feature film, ALL THE LABOR premiered at the SXSW Film Festival in 2013.  In 2012, their feature documentary FACING THE STORM: STORY OF THE AMERICAN BISON, a co-production of ITVS and Montana Public Television, was broadcast on the national PBS series, Independent Lens. In 2007, their film, LIBBY, MONTANA was broadcast nationally on the acclaimed PBS Series, POV: The American Documentary, and was nominated for a National Emmy Award the following year. </p>
 
-                    <p>Challenging in form and content, much of their work is intended to provide insight into the relationship between human society and the natural world.</p>
-
-<p>Carr and Hawes-Davis have also worked extensively as free-lance camera operators, producers, directors, and editors, assisting with documentaries, television, web video, and non-profit/corporate video production.</p>
-
-<p>Hawes-Davis is the founder of the annual Big Sky Documentary Film Festival, an Academy-qualifying event for short-form documentary.  The festival is consistently recognized as one of the world's finest documentary cinema events.</p>
-
-<p>Additionally, Hawes-Davis has taught filmmaking at the University of Montana and in the Colorado College Film & Media Studies Program.  Dru Carr has taught media production at the MAPS Media Institute in the Hamilton, Montana public school system as well as for Missoula Community Access Television (MCAT). </p>
-
-<p>High Plains Films also produces THE MONTANA EXPERIENCE: STORIES FROM BIG SKY COUNTRY, a youtube channel dedicated to all things concerning the great State of Montana.</p>
-                    <!--<div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number"><?php //echo wp_count_posts('film')->publish; ?></span>
-                            <span class="stat-label">Films Produced</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">25+</span>
-                            <span class="stat-label">Awards Won</span>
-                        </div>
-                    </div>-->
-                </div>
-                
-                <div class="about-image">
-                    <!-- You can add an about image here -->
-                    <div class="about-placeholder">
-                        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="300" fill="var(--color-primary-light)" opacity="0.1"/>
-                            <path d="M200 100L250 150L200 200L150 150L200 100Z" fill="var(--color-accent)" opacity="0.3"/>
-                            <circle cx="200" cy="150" r="30" fill="var(--color-primary)" opacity="0.2"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Portfolio Preview Section -->
     <section class="portfolio-preview-section">
         <div class="container">
@@ -254,6 +206,54 @@ get_header();
             
             <div class="section-footer">
                 <a href="/films/" class="btn btn-primary">View All Films</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Big Sky Pictures</h2>
+                    
+                    <p class="lead">Doug Hawes-Davis and Dru Carr co-founded High Plains Films in 1992 and have collaborated on dozens of independent documentaries, branded content, PSA's, and other media for more than three decades.  Their most recent feature film, ALL THE LABOR premiered at the SXSW Film Festival in 2013.  In 2012, their feature documentary FACING THE STORM: STORY OF THE AMERICAN BISON, a co-production of ITVS and Montana Public Television, was broadcast on the national PBS series, Independent Lens. In 2007, their film, LIBBY, MONTANA was broadcast nationally on the acclaimed PBS Series, POV: The American Documentary, and was nominated for a National Emmy Award the following year. </p>
+
+                    <p>Challenging in form and content, much of their work is intended to provide insight into the relationship between human society and the natural world.</p>
+
+<p>Carr and Hawes-Davis have also worked extensively as free-lance camera operators, producers, directors, and editors, assisting with documentaries, television, web video, and non-profit/corporate video production.</p>
+
+<p>Hawes-Davis is the founder of the annual Big Sky Documentary Film Festival, an Academy-qualifying event for short-form documentary.  The festival is consistently recognized as one of the world's finest documentary cinema events.</p>
+
+<p>Additionally, Hawes-Davis has taught filmmaking at the University of Montana and in the Colorado College Film & Media Studies Program.  Dru Carr has taught media production at the MAPS Media Institute in the Hamilton, Montana public school system as well as for Missoula Community Access Television (MCAT). </p>
+
+<p>High Plains Films also produces THE MONTANA EXPERIENCE: STORIES FROM BIG SKY COUNTRY, a youtube channel dedicated to all things concerning the great State of Montana.</p>
+                    <!--<div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number"><?php //echo wp_count_posts('film')->publish; ?></span>
+                            <span class="stat-label">Films Produced</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Awards Won</span>
+                        </div>
+                    </div>-->
+                </div>
+                
+                <div class="about-image">
+                    <!-- You can add an about image here -->
+                    <div class="about-placeholder">
+                        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="300" fill="var(--color-primary-light)" opacity="0.1"/>
+                            <path d="M200 100L250 150L200 200L150 150L200 100Z" fill="var(--color-accent)" opacity="0.3"/>
+                            <circle cx="200" cy="150" r="30" fill="var(--color-primary)" opacity="0.2"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
